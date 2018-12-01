@@ -1,8 +1,7 @@
-package com.demo.springboot.controller;
+package com.demo.springbootjsp.controller;
 
-import com.demo.springboot.config.ConfigInfo;
+import com.demo.springbootjsp.config.ConfigInfo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

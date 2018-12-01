@@ -1,4 +1,4 @@
-package com.demo.springboot;
+package com.demo.springbootjsp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
