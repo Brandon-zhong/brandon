@@ -11,6 +11,7 @@
         <module>springboot-jsp</module>
         <module>demo</module>
         <module>springboot-mybatis</module>
+        <module>springboot-common</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -32,6 +33,14 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.apache.logging.log4j</groupId>-->
+        <!--<artifactId>log4j-api</artifactId>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>org.apache.logging.log4j</groupId>-->
+        <!--<artifactId>log4j-core</artifactId>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>
