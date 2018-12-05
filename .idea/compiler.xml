@@ -8,12 +8,20 @@
         <outputRelativeToContentRoot value="true" />
         <module name="demo" />
         <module name="springboot" />
+        <module name="springboot-common" />
+        <module name="springboot-jsp" />
+        <module name="springboot-mybatis" />
+        <module name="springbootmy-batis" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="brandon" target="1.8" />
       <module name="demo" target="1.8" />
       <module name="springboot" target="1.8" />
+      <module name="springboot-common" target="1.8" />
+      <module name="springboot-jsp" target="1.8" />
+      <module name="springboot-mybatis" target="1.8" />
+      <module name="springbootmy-batis" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
