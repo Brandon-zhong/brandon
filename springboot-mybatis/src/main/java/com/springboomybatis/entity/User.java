@@ -13,7 +13,7 @@ public class User implements Serializable {
 
     private String password;
 
-    private Integer age;
+    private Integer age = 0;    //用户年龄默认为0
 
     private Date created;
 

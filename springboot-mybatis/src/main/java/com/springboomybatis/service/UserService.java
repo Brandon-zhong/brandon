@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * @author brandon
  * Created on 2018-12-01.
+ * desc: 用户业务处理的接口类
  */
 public interface UserService {
 
@@ -15,4 +16,6 @@ public interface UserService {
     User login(String username, String password);
 
     int register(String userName, String password, int age);
+
+    int modifyUser(User user);
 }
