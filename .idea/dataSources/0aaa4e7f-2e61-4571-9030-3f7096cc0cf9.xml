@@ -840,24 +840,24 @@
     <column id="208" parent="204" name="age">
       <Position>4</Position>
       <Comment>用户的年龄,默认为0</Comment>
-      <DataType>int(11)|0s</DataType>
+      <DataType>int(2)|0s</DataType>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="209" parent="204" name="created">
       <Position>5</Position>
       <Comment>用户创建的时间</Comment>
-      <DataType>timestamp|0s</DataType>
+      <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="210" parent="204" name="last_use">
       <Position>6</Position>
       <Comment>用户上一次使用的时间</Comment>
-      <DataType>timestamp|0s</DataType>
+      <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;0000-00-00 00:00:00&apos;</DefaultExpression>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <key id="211" parent="204" name="PRIMARY">

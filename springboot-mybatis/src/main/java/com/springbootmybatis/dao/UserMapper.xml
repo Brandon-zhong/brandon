@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.springboomybatis.dao.UserMapper">
-
-    <resultMap id="BaseResultMap" type="com.springboomybatis.entity.User">
+<mapper namespace="com.springbootmybatis.dao.UserMapper">
+    <resultMap id="BaseResultMap" type="com.springbootmybatis.entity.User">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
         <result column="password" jdbcType="VARCHAR" property="password"/>
         <result column="age" jdbcType="INTEGER" property="age"/>
-        <result column="created" jdbcType="TIMESTAMP" property="created"/>
-        <result column="last_use" jdbcType="TIMESTAMP" property="lastUse"/>
+        <result column="created" jdbcType="INTEGER" property="created"/>
+        <result column="last_use" jdbcType="INTEGER" property="lastUse"/>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -22,17 +21,17 @@
         where id = #{id,jdbcType=INTEGER}
     </select>
 
-    <select id="selectByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from user
-        where name = #{name,jdbcType=VARCHAR}
-    </select>
-
     <select id="selectAllUser" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from user
+    </select>
+
+    <select id="selectByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+        where name = #{userName,jdbcType=VARCHAR}
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
@@ -40,16 +39,16 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
 
-    <insert id="insert" parameterType="com.springboomybatis.entity.User">
+    <insert id="insert" parameterType="com.springbootmybatis.entity.User">
     insert into user (id, name, password, 
       age, created, last_use
       )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{age,jdbcType=INTEGER}, #{created,jdbcType=TIMESTAMP}, #{lastUse,jdbcType=TIMESTAMP}
+      #{age,jdbcType=INTEGER}, #{created,jdbcType=INTEGER}, #{lastUse,jdbcType=INTEGER}
       )
   </insert>
 
-    <insert id="insertSelective" parameterType="com.springboomybatis.entity.User">
+    <insert id="insertSelective" parameterType="com.springbootmybatis.entity.User">
         insert into user
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -85,15 +84,15 @@
                 #{age,jdbcType=INTEGER},
             </if>
             <if test="created != null">
-                #{created,jdbcType=TIMESTAMP},
+                #{created,jdbcType=INTEGER},
             </if>
             <if test="lastUse != null">
-                #{lastUse,jdbcType=TIMESTAMP},
+                #{lastUse,jdbcType=INTEGER},
             </if>
         </trim>
     </insert>
 
-    <update id="updateByPrimaryKeySelective" parameterType="com.springboomybatis.entity.User">
+    <update id="updateByPrimaryKeySelective" parameterType="com.springbootmybatis.entity.User">
         update user
         <set>
             <if test="name != null">
@@ -106,22 +105,22 @@
                 age = #{age,jdbcType=INTEGER},
             </if>
             <if test="created != null">
-                created = #{created,jdbcType=TIMESTAMP},
+                created = #{created,jdbcType=INTEGER},
             </if>
             <if test="lastUse != null">
-                last_use = #{lastUse,jdbcType=TIMESTAMP},
+                last_use = #{lastUse,jdbcType=INTEGER},
             </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
 
-    <update id="updateByPrimaryKey" parameterType="com.springboomybatis.entity.User">
+    <update id="updateByPrimaryKey" parameterType="com.springbootmybatis.entity.User">
     update user
     set name = #{name,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       age = #{age,jdbcType=INTEGER},
-      created = #{created,jdbcType=TIMESTAMP},
-      last_use = #{lastUse,jdbcType=TIMESTAMP}
+      created = #{created,jdbcType=INTEGER},
+      last_use = #{lastUse,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 

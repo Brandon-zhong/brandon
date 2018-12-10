@@ -1,12 +1,13 @@
-package com.springboomybatis.dao;
+package com.springbootmybatis.dao;
 
-import com.springboomybatis.entity.User;
+import com.springbootmybatis.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 @Mapper
 public interface UserMapper {
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(User record);
@@ -15,11 +16,11 @@ public interface UserMapper {
 
     User selectByPrimaryKey(Integer id);
 
-    User selectByUserName(String name);
-
-    List<User> selectAllUser();
-
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    List<User> selectAllUser();
+
+    User selectByUserName(String userName);
 }

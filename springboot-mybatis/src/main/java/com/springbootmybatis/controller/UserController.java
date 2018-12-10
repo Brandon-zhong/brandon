@@ -1,10 +1,13 @@
-package com.springboomybatis.controller;
+package com.springbootmybatis.controller;
 
 import com.spirngboot.common.RestResp;
 import com.spirngboot.utils.StringUtil;
-import com.springboomybatis.entity.User;
-import com.springboomybatis.service.UserService;
+import com.springbootmybatis.entity.User;
+import com.springbootmybatis.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,7 +19,10 @@ import java.util.List;
  * 以及调用service逻辑处理方法
  */
 @RestController
+@ComponentScan("com.spirngboot.utils")//这里是提示spring扫描这个包
 public class UserController {
+
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private UserService userService;
