@@ -7,7 +7,9 @@ import com.springboomybatis.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author brandon
@@ -38,6 +40,8 @@ public class UserController {
 
         User login = userService.login(user.getName(), user.getPassword());
         if (null == login) {
+
+            Map<String, Object> map = new HashMap<>(2);
             return RestResp.fail("用户名或密码错误!");
         }
 
