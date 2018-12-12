@@ -1,6 +1,6 @@
-package com.springboomybatis.service;
+package com.springbootmybatis.service;
 
-import com.springboomybatis.entity.User;
+import com.springbootmybatis.entity.User;
 
 import java.util.List;
 
@@ -18,4 +18,5 @@ public interface UserService {
     int register(String userName, String password, int age);
 
     int modifyUser(User user);
+
 }

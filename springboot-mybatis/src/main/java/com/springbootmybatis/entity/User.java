@@ -1,24 +1,26 @@
-package com.springboomybatis.entity;
+package com.springbootmybatis.entity;
 
+import com.spirngboot.utils.TimeUtil;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
 
 @Data
 public class User implements Serializable {
+
     private Integer id;
 
     private String name;
 
     private String password;
 
-    private Integer age = 0;    //用户年龄默认为0
+    private Integer age;
 
-    private Integer created;
+    private Integer created = TimeUtil.getTimeSecend();
 
-    private Integer lastUse;
+    private Integer lastUse = TimeUtil.getTimeSecend();
 
     private static final long serialVersionUID = 1L;
+
 
 }
