@@ -12,6 +12,7 @@
         <module>demo</module>
         <module>springboot-mybatis</module>
         <module>springboot-common</module>
+        <module>magic-story</module>
     </modules>
     <packaging>pom</packaging>
 

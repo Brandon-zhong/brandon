@@ -1,4 +1,4 @@
-package com.demo.springboot.cron;
+package com.demo.springbootjsp.cron;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

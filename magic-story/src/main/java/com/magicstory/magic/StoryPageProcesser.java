@@ -1,4 +1,4 @@
-package com.demo.webmagic.Story;
+package com.magicstory.magic;
 
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;

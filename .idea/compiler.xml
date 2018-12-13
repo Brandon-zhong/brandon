@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="demo" />
+        <module name="magic-story" />
         <module name="springboot-common" />
         <module name="springboot-jsp" />
         <module name="springboot-mybatis" />
@@ -15,6 +16,7 @@
     <bytecodeTargetLevel>
       <module name="brandon" target="1.8" />
       <module name="demo" target="1.8" />
+      <module name="magic-story" target="1.8" />
       <module name="springboot-common" target="1.8" />
       <module name="springboot-jsp" target="1.8" />
       <module name="springboot-mybatis" target="1.8" />
