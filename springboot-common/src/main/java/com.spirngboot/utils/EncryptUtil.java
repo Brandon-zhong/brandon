@@ -1,5 +1,7 @@
 package com.spirngboot.utils;
 
+import org.apache.commons.codec.binary.Hex;
+import org.apache.commons.net.util.Base64;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
@@ -15,53 +17,48 @@ import java.security.NoSuchAlgorithmException;
  */
 public class EncryptUtil {
 
-    public static String encodeMD5(String str) {
-        return encrypt(str, "MD5");
+    private EncryptUtil() {
     }
 
-    public static String encodeSHA1(String str) {
+    public static String MD5(String str) {
+        return encrypt(str, "MD5").toUpperCase();
+    }
+
+    public static String SHA1(String str) {
         return encrypt(str, "SHA-1");
     }
 
-    public static String encodeSHA256(String str) {
+    public static String SHA256(String str) {
         return encrypt(str, "SHA-256");
     }
 
     public static String encodeBase64(String str) {
-        BASE64Encoder encoder = new BASE64Encoder();
-        return encoder.encode(str.getBytes());
+        return encodeBase64(str.getBytes());
     }
 
     public static String decodeBase64(String str) {
-        BASE64Decoder decoder = new BASE64Decoder();
-        try {
-            return new String(decoder.decodeBuffer(str));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return new String(Base64.decodeBase64(str.getBytes()));
+    }
+
+    public static String encodeBase64(byte[] input) {
+        return new String(Base64.encodeBase64(input));
     }
 
     private static String encrypt(String src, String type) {
         if (src == null) {
             return null;
         }
-        MessageDigest md = null;
         String result = null;
-        byte[] b = src.getBytes();
         try {
-            md = MessageDigest.getInstance(type);
+            byte[] b = src.getBytes("UTF-8");
+            MessageDigest md = MessageDigest.getInstance(type);
             md.update(b);
 
-            result = new BigInteger(1, md.digest()).toString(16);
-        } catch (NoSuchAlgorithmException e) {
+            result = new String(Hex.encodeHex(md.digest()));
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
     }
-
-    private EncryptUtil() {
-    }
-
 
 }
