@@ -20,7 +20,6 @@ public class App {
         Computer computer = new Computer(new ReadSDCardAdapter());
         String data = computer.usb();
         LOG.info("the data is --> {}", data);
-
     }
 
 }

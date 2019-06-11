@@ -10,6 +10,7 @@ public class TestMain {
     public static void main(String[] args) {
 
         reverse(-189);
+
     }
 
 
@@ -20,15 +21,13 @@ public class TestMain {
 
         boolean bool = number.contains("-");
         String a = "";
-        if (bool){
+        if (bool) {
             a = number.substring(0, 1);
         }
         char[] chars = number.replaceAll("-", "").toCharArray();
         for (int i = chars.length; i >= 0; i--) {
 
         }
-
-
         return 0;
     }
 

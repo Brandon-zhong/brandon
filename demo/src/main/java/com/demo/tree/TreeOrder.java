@@ -7,22 +7,6 @@ package com.demo.tree;
  */
 public class TreeOrder<E> {
 
-    static final class Node<E> {
-
-        final E data;
-
-        boolean read = false;
-
-        Node<E> left;
-
-        Node<E> right;
-
-        Node<E> parent;
-
-        Node(E data) {
-            this.data = data;
-        }
-    }
 
     private Node<String> getTree() {
 
