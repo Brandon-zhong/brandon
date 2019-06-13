@@ -13,7 +13,8 @@
         <module>springboot-mybatis</module>
         <module>springboot-common</module>
         <module>magic-story</module>
-        <module>Design-Pattern</module>
+        <module>design-pattern</module>
+        <module>leetcode</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -89,7 +89,7 @@ public class UserServiceImpl implements UserService {
             return null;
         }
 
-        if (!EncryptUtil.encodeSHA256(password).equals(user.getPassword())) {
+        if (!EncryptUtil.SHA256(password).equals(user.getPassword())) {
             return null;
         }
         //验证密码成功后,更新最近登录时间
@@ -125,7 +125,7 @@ public class UserServiceImpl implements UserService {
 
         User user = new User();
         user.setName(userName);
-        user.setPassword(EncryptUtil.encodeSHA256(password));
+        user.setPassword(EncryptUtil.SHA256(password));
         user.setAge(age);
         user.setLastUse(TimeUtil.getTimeSecend());
 
@@ -164,7 +164,7 @@ public class UserServiceImpl implements UserService {
             selectUser.setAge(user.getAge());
         }
         if (!StringUtil.isEmpty(user.getPassword())) {//密码更新的时候要进行加密操作
-            selectUser.setPassword(EncryptUtil.encodeSHA256(user.getPassword()));
+            selectUser.setPassword(EncryptUtil.SHA256(user.getPassword()));
         }
         return userMapper.updateByPrimaryKeySelective(selectUser);
     }
