@@ -7,16 +7,16 @@ package com.demo.linklist;
  */
 public class LinkListCycle {
 
-    public static void main(String[] args) {
-
-        LinkListCycle linkListCycle = new LinkListCycle();
-        Node<Integer> cycleLinkList = linkListCycle.getCycleLinkList();
-        System.out.println("head --> " + cycleLinkList.data);
-        Node<Integer> meetPoint = linkListCycle.getMeetPoint(cycleLinkList);
-        System.out.println("meet point --> " + (meetPoint == null ? "null" : meetPoint.data));
-        Node<Integer> cyclePoint = linkListCycle.getCyclePoint(cycleLinkList);
-        System.out.println("cycle point --> " + cyclePoint.data);
-    }
+//    public static void main(String[] args) {
+//
+//        LinkListCycle linkListCycle = new LinkListCycle();
+//        Node<Integer> cycleLinkList = linkListCycle.getCycleLinkList();
+//        System.out.println("head --> " + cycleLinkList.data);
+//        Node<Integer> meetPoint = linkListCycle.getMeetPoint(cycleLinkList);
+//        System.out.println("meet point --> " + (meetPoint == null ? "null" : meetPoint.data));
+//        Node<Integer> cyclePoint = linkListCycle.getCyclePoint(cycleLinkList);
+//        System.out.println("cycle point --> " + cyclePoint.data);
+//    }
 
     private Node<Integer> getCycleLinkList() {
         int len = 15;

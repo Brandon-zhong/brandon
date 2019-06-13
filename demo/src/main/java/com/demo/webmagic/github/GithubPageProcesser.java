@@ -36,7 +36,7 @@ public class GithubPageProcesser implements PageProcessor {
     }
 
 
-    public static void main(String[] args) {
-        Spider.create(new GithubRepoPageProcessor()).addUrl("https://github.com/code4craft").addPipeline(new JsonFilePipeline("E:\\webmagic\\")).thread(5).run();
-    }
+//    public static void main(String[] args) {
+//        Spider.create(new GithubRepoPageProcessor()).addUrl("https://github.com/code4craft").addPipeline(new JsonFilePipeline("E:\\webmagic\\")).thread(5).run();
+//    }
 }

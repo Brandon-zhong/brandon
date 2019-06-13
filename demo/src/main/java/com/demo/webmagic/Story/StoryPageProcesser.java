@@ -93,13 +93,13 @@ public class StoryPageProcesser implements PageProcessor {
         return site;
     }
 
-    public static void main(String[] args) {
-//        String url = "https://www.37zw.net/3/3578/";
-        String url = "https://www.37zw.net/1/1291/";
-        String path = "F:\\webmagic\\";
-        StoryPageProcesser processer = new StoryPageProcesser();
-        processer.setURL(url);
-        processer.setPath(path);
-        Spider.create(processer).addUrl(url).run();
-    }
+//    public static void main(String[] args) {
+////        String url = "https://www.37zw.net/3/3578/";
+//        String url = "https://www.37zw.net/1/1291/";
+//        String path = "F:\\webmagic\\";
+//        StoryPageProcesser processer = new StoryPageProcesser();
+//        processer.setURL(url);
+//        processer.setPath(path);
+//        Spider.create(processer).addUrl(url).run();
+//    }
 }

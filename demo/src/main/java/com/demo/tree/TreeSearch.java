@@ -63,14 +63,14 @@ public class TreeSearch extends TreeOrder<Integer> {
     }
 
 
-    public static void main(String[] args) {
-
-        TreeSearch treeSearch = new TreeSearch();
-        Node<Integer> tree = treeSearch.getSearchTree();
-        treeSearch.preOrder(tree);
-        Node<Integer> node = treeSearch.get(tree, 19);
-        System.out.println("\ndata --> " + (node == null ? 0 : node.data));
-
-    }
+//    public static void main(String[] args) {
+//
+//        TreeSearch treeSearch = new TreeSearch();
+//        Node<Integer> tree = treeSearch.getSearchTree();
+//        treeSearch.preOrder(tree);
+//        Node<Integer> node = treeSearch.get(tree, 19);
+//        System.out.println("\ndata --> " + (node == null ? 0 : node.data));
+//
+//    }
 
 }

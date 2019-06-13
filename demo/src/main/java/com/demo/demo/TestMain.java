@@ -7,11 +7,11 @@ package com.demo.demo;
  */
 public class TestMain {
 
-    public static void main(String[] args) {
-
-        reverse(-189);
-
-    }
+//    public static void main(String[] args) {
+//
+//        reverse(-189);
+//
+//    }
 
 
     public static int reverse(int x) {

@@ -103,15 +103,15 @@ public class ZhihuHomePageProcessor implements PageProcessor {
     }
 
 
-    public static void main(String[] args) {
-        userName = "xiao-xian-nu-albee";
-        //个人主页的网址
-        String url = "https://www.zhihu.com/people/ling-long-xie-seng/answers";
-        Spider.create(new ZhihuHomePageProcessor())
-                .addUrl(url)
-//				.addPipeline(new GetquestionUrlPipeline())
-                .thread(10)
-                .run();
-
-    }
+//    public static void main(String[] args) {
+//        userName = "xiao-xian-nu-albee";
+//        //个人主页的网址
+//        String url = "https://www.zhihu.com/people/ling-long-xie-seng/answers";
+//        Spider.create(new ZhihuHomePageProcessor())
+//                .addUrl(url)
+////				.addPipeline(new GetquestionUrlPipeline())
+//                .thread(10)
+//                .run();
+//
+//    }
 }

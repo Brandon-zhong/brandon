@@ -107,15 +107,15 @@ public class ZhihuPageProcesser implements PageProcessor {
     }
 
 
-    public static void main(String[] args) {
-        questionId = "24400664";
-        Site site = new Site();
-        site.setCharset("UTF-8");
-        Spider.create(new ZhihuPageProcesser())
-                .addUrl("https://www.zhihu.com/question/" + questionId)
-//				.addPipeline(new GetquestionUrlPipeline())
-                .thread(10)
-                .run();
-
-    }
+//    public static void main(String[] args) {
+//        questionId = "24400664";
+//        Site site = new Site();
+//        site.setCharset("UTF-8");
+//        Spider.create(new ZhihuPageProcesser())
+//                .addUrl("https://www.zhihu.com/question/" + questionId)
+////				.addPipeline(new GetquestionUrlPipeline())
+//                .thread(10)
+//                .run();
+//
+//    }
 }

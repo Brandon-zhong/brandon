@@ -29,7 +29,7 @@ public class BlogPageProcesser implements PageProcessor {
         return site;
     }
 
-    public static void main(String[] args) {
-        Spider.create(new BlogPageProcesser()).addUrl("http://my.oschina.net/flashsword/blog").addPipeline(new ConsolePipeline()).run();
-    }
+//    public static void main(String[] args) {
+//        Spider.create(new BlogPageProcesser()).addUrl("http://my.oschina.net/flashsword/blog").addPipeline(new ConsolePipeline()).run();
+//    }
 }

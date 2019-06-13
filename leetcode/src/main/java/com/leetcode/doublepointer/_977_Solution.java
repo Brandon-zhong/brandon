@@ -1,5 +1,7 @@
 package com.leetcode.doublepointer;
 
+import com.demo.sort.MergeSort;
+
 import java.util.Arrays;
 
 /**
@@ -30,8 +32,8 @@ public class _977_Solution {
         for (int i = 0; i < param.length; i++) {
             nums[i] = param[i] * param[8];
         }
-        //排序，快排
-
+        //排序，快排or归并排序
+        MergeSort.mergeSort(nums, 0, nums.length - 1);
         return nums;
 
     }
