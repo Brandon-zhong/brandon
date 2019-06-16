@@ -1,7 +1,5 @@
 package com.demo.sort;
 
-import java.util.Arrays;
-
 /**
  * @author brandon
  * create on 2019-06-13
@@ -47,6 +45,7 @@ public class MergeSort {
         while (remainIndex <= remainEnd) {
             temp[index++] = a[remainIndex++];
         }
+
         //将temp的数据拷贝会 a 数组中
         for (int i = 0; i < temp.length; i++) {
             a[pStart + i] = temp[i];
