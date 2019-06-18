@@ -48,27 +48,26 @@ public class QuickSort {
     /**
      * 获取数组第n大的元素
      */
-    public static int get(int[] nums, int start, int end, int n) {
+    public static void get(int[] nums, int start, int end, int n) {
 
         if (start >= end) {
-            return start;
+            return;
         }
         int partition = partition(nums, start, end) + 1;
 
-        if (partition == n) {
-            return n;
-        } else if (partition < n) {
-            return get(nums, partition, end, n);
+        if (partition < n) {
+            get(nums, partition, end, n);
+        } else {
+            get(nums, start, partition - 2, n);
         }
-        return get(nums, start, partition - 2, n);
     }
 
     public static void main(String[] args) {
 
         int[] nums = new int[]{3, 1, 5, 6, 3, 9, 2, 0, 4};
-        int j = get(nums, 0, nums.length - 1, 8) - 1;
-        int i = nums[j];
-        System.out.println(Arrays.toString(nums) + "   " + i);
+        int j = 8;
+        get(nums, 0, nums.length - 1, 8);
+        System.out.println(Arrays.toString(nums) + "   " + nums[j - 1]);
 
     }
 
