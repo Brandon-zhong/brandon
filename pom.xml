@@ -15,6 +15,7 @@
         <module>magic-story</module>
         <module>design-pattern</module>
         <module>leetcode</module>
+        <module>spring-demo</module>
     </modules>
     <packaging>pom</packaging>
 

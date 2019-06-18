@@ -1,0 +1,16 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd  ">
+
+    <bean name="userDao" class="com.spring.demo.dao.UserDao">
+        <constructor-arg name="username" value="brandon"/>
+        <constructor-arg name="age" value="18"/>
+    </bean>
+
+    <bean name="userService" class="com.spring.demo.service.UserService">
+        <constructor-arg name="userDao" ref="userDao"/>
+    </bean>
+
+
+</beans>
