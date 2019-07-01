@@ -35,6 +35,14 @@
             <version>5.0.10.RELEASE</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>5.0.10.RELEASE</version>
+        </dependency>
+
+
 
     </dependencies>
 
