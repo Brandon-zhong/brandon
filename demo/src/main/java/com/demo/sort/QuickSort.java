@@ -64,10 +64,11 @@ public class QuickSort {
 
     public static void main(String[] args) {
 
-        int[] nums = new int[]{3, 1, 5, 6, 3, 9, 2, 0, 4};
-        int j = 8;
-        get(nums, 0, nums.length - 1, 8);
-        System.out.println(Arrays.toString(nums) + "   " + nums[j - 1]);
+        int[] nums = new int[]{3, 2, 1, 5, 6, 4};
+        int j = 2;
+        int k = nums.length - j + 1;
+        get(nums, 0, nums.length - 1, k);
+        System.out.println(Arrays.toString(nums) + "   " + nums[k - 1]);
 
     }
 
