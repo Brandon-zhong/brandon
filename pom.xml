@@ -17,7 +17,6 @@
         <module>leetcode</module>
         <module>spring-demo</module>
         <module>spring-shiro</module>
-        <module>sword-finger-offer</module>
     </modules>
     <packaging>pom</packaging>
 
