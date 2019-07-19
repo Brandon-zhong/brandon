@@ -9,7 +9,7 @@ package com.leetcode.array;
  * 例如，如果输入长度为7的数组 {2,3,1,0,2,5,3}，
  * 那么对应的输出是重复的数字2或者3。
  */
-public class InterviewQuestions_3 {
+public class InterviewQuestions_3_1 {
 
     /**
      * 根据题目可知，长度为n的数组里所有元素都是在0~n-1的范围内，
