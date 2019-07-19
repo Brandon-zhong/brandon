@@ -1,5 +1,7 @@
 package com.leetcode.array;
 
+import java.util.List;
+
 /**
  * @author brandon
  * Created on 2019-07-13.
@@ -37,6 +39,17 @@ public class InterviewQuestions_3_1 {
             nums[i] = k;
         }
         return -1;
+    }
+
+    /**
+     * 查找所有的重复元素
+     */
+    public static List<Integer> solution_2(int[] nums) {
+        int i = 0;
+        while (i < nums.length) {
+
+        }
+        return null;
     }
 
 

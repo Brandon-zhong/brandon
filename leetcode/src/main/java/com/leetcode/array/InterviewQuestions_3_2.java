@@ -15,13 +15,34 @@ public class InterviewQuestions_3_2 {
      */
     public static int solution_1(int[] nums) {
 
+        //数组范围为 1 ~ nums.length - 1
+        int start = 1, end = nums.length - 1;
+        while (start < end) {
+            int prive = (end + start) >> 1;
+            //统计 start~prive的数字的个数
+            int count = countNum(nums, start, prive);
+            if (count != ((prive - start) + 1)) {
+                end = prive;
+                continue;
+            }
+            start = prive + 1;
+        }
+        return start;
+    }
 
-        return -1;
+    private static int countNum(int[] nums, int start, int end) {
+        int count = 0;
+        for (int num : nums) {
+            if (num >= start && num <= end) {
+                ++count;
+            }
+        }
+        return count;
     }
 
 
     public static void main(String[] args) {
-        int[] nums = new int[]{2, 3, 1, 0, 2, 5, 3};
+        int[] nums = new int[]{2, 1, 5, 4, 3, 7, 6, 7};
         int i = solution_1(nums);
         System.out.println(i);
 
