@@ -1,5 +1,7 @@
 package com.demo.tree;
 
+import java.util.Objects;
+
 /**
  * @author brandon
  * create on 2019-05-15
@@ -55,11 +57,64 @@ public class TreeSearch extends TreeOrder<Integer> {
             }
             if (node.data > data) {
                 node = node.left;
-            } else if (node.data < data) {
+            } else {
                 node = node.right;
             }
         }
         return null;
+    }
+
+    //TODO 树节点的删除（待完成）
+    private boolean delete(Node<Integer> root, int data) {
+
+        /*Node<Integer> node = root, parent = null;
+        //查找节点和节点的父节点
+        for (; node != null && node.data != data; ) {
+            parent = node;
+            node = node.data > data ? node.left : node.right;
+        }
+        //没找到，返回
+        if (node == null) {
+            return false;
+        }
+
+        //如果节点有两个子树,则查找右子树的最小节点替换要删除的节点
+        if (node.left != null && node.right != null) {
+           Node<Integer> left = node.right;
+           Node<Integer> p = null;
+            while (left.left != null) {
+                p = left;
+                left = left.left;
+            }
+           //将left替换到node
+            if (parent.data > node.data) {
+                parent.left = left;
+            }else {
+                parent.right = left;
+            }
+            left.left = node.left;
+            node.left = null;
+            left.right = node.right;
+            node.right = null;
+        }
+
+        //节点只有叶子节点或者只有一个节点
+        Node<Integer> child = null;
+        if (node.left != null) {
+            child = node.left;
+        }else if (node.right != null){
+            child = node.right;
+        }else {
+            child = node;
+        }
+
+        //删除父节点
+        if (parent == null) {
+
+        }*/
+
+
+        return true;
     }
 
 
