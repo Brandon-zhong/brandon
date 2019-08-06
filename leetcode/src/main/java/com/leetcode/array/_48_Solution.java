@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * @author brandon
  * Created on 2019-08-04.
- * desc:旋转图像
+ * desc: 旋转图像
  * 给定一个 n × n 的二维矩阵表示一个图像。
  * <p>
  * 将图像顺时针旋转 90 度。
@@ -49,6 +49,11 @@ import java.util.Arrays;
  */
 public class _48_Solution {
 
+    /**
+     * 思路是一个坐标的90度旋转符合一个规律，[x,y]的上一个节点为[len-y-1,x]
+     * 同时一个正方形可以分割为4个矩形，矩形的长＋宽为正方形的边长，
+     * 只要将一个矩形的的所有坐标全部向上推导3次，可以计算出所有节点的位置，然后替换就行了
+     */
     public void rotate(int[][] matrix) {
 
         //先确定移动矩阵的大小
@@ -64,18 +69,17 @@ public class _48_Solution {
     public void pre(int x, int y, int[][] matrix) {
         int len = matrix.length;
         int temp = matrix[x][y];
-        int a = x, b = y;
         for (int i = 0; i < 3; ++i) {
             //计算a，b的上一个坐标
-            int u = len - b - 1;
-            int o = a;
+            int u = len - y - 1;
+            int o = x;
             //将上一个坐标的值复制到 a,b中
-            matrix[a][b] = matrix[u][o];
-            a = u;
-            b = o;
+            matrix[x][y] = matrix[u][o];
+            x = u;
+            y = o;
         }
         //将temp的值复制到a，b中
-        matrix[a][b] = temp;
+        matrix[x][y] = temp;
     }
 
     public void print(int[][] matrix) {
