@@ -46,12 +46,12 @@
         </javaModelGenerator>
 
         <!-- 生成MyBatis的Mapper.xml文件，targetPackage指定mapper.xml文件的包名， targetProject指定生成的mapper.xml放在eclipse的哪个工程下面 -->
-        <sqlMapGenerator targetPackage="com.springbootmybatis.dao" targetProject="src/main/java/">
+        <sqlMapGenerator targetPackage="com.springbootmybatis.mapper" targetProject="src/main/java/">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 
         <!-- 生成MyBatis的Mapper接口类文件,targetPackage指定Mapper接口类的包名， targetProject指定生成的Mapper接口放在eclipse的哪个工程下面 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.springbootmybatis.dao" targetProject="src/main/java/">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.springbootmybatis.mapper" targetProject="src/main/java/">
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 

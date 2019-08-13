@@ -1,26 +1,37 @@
 package com.springbootmybatis.entity;
 
-import com.spirngboot.utils.TimeUtil;
-import lombok.Data;
 
 import java.io.Serializable;
 
-@Data
-public class User implements Serializable {
+public class User {
 
     private Integer id;
 
     private String name;
 
-    private String password;
-
     private Integer age;
 
-    private Integer created = TimeUtil.getTimeSecend();
+    public Integer getId() {
+        return id;
+    }
 
-    private Integer lastUse = TimeUtil.getTimeSecend();
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-    private static final long serialVersionUID = 1L;
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
 }

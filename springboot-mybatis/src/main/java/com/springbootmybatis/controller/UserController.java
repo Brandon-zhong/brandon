@@ -6,14 +6,12 @@ import com.springbootmybatis.entity.User;
 import com.springbootmybatis.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
+import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author brandon
@@ -30,30 +28,6 @@ public class UserController {
     @Resource
     private UserService userService;
 
-    /**
-     * 用户登录的controller操作
-     *
-     * @param user 用户登录的用户信息
-     * @return 返回前端的登录结果
-     */
-    @PostMapping("/login")
-    public RestResp login(@RequestBody User user) {
-        if (null == user) {
-            return RestResp.fail("参数错误!");
-        }
-        if (StringUtil.isEmpty(user.getName()) || StringUtil.isEmpty(user.getPassword())) {
-            return RestResp.fail("用户名或密码不能为空!");
-        }
-
-        User login = userService.login(user.getName(), user.getPassword());
-        if (null == login) {
-
-            Map<String, Object> map = new HashMap<>(2);
-            return RestResp.fail("用户名或密码错误!");
-        }
-
-        return RestResp.success("登录成功", login);
-    }
 
     /**
      * 获取所有的用户信息 list集合
@@ -62,11 +36,17 @@ public class UserController {
      */
     @GetMapping("/allUser")
     public RestResp allUser() {
-        List<User> allUser = userService.getAllUser();
-        if (null == allUser || allUser.size() == 0) {
-            return RestResp.fail("数据错误!");
-        }
-        return RestResp.success(allUser);
+        List<User> allUserDemo1 = userService.getAllUserDemo1();
+        List<User> allUserDemo2 = userService.getAllUserDemo2();
+        Data data = new Data();
+        data.demo1 = allUserDemo1;
+        data.demo2 = allUserDemo2;
+        return RestResp.success(data);
+    }
+
+    class Data implements Serializable {
+        List demo1;
+        List demo2;
     }
 
     /**
@@ -80,36 +60,12 @@ public class UserController {
         if (null == user) {
             return RestResp.fail("参数错误!");
         }
-        if (StringUtil.isEmpty(user.getName()) || StringUtil.isEmpty(user.getPassword())) {
-            return RestResp.fail("用户名或密码不能为空!");
-        }
-
-        int register = userService.register(user.getName(), user.getPassword(), user.getAge());
+        int register = userService.register(user.getName(), user.getAge());
         if (register == 0) {
             return RestResp.fail("注册失败!");
         }
         return RestResp.success();
     }
 
-    /**
-     * 修改用户信息操作 (用户id或者用户姓名至少一项必传)
-     *
-     * @param user 要修改的用户信息(可修改的信息有:密码,年龄)
-     * @return 返回前端修改信息的结果
-     */
-    @PutMapping("/user")
-    public RestResp modifyUser(@RequestBody User user) {
-        if (null == user) {
-            return RestResp.fail("参数错误!");
-        }
-        if (Integer.valueOf(0) == user.getId() && StringUtil.isEmpty(user.getName())) {
-            return RestResp.fail("用户id和用户名至少有一项有效");
-        }
-        int modifyUser = userService.modifyUser(user);
-        if (0 == modifyUser) {
-            return RestResp.fail("修改用户信息失败!");
-        }
-        return RestResp.success();
-    }
 
 }
