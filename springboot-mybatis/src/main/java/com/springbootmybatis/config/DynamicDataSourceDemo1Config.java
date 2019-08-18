@@ -21,7 +21,7 @@ import javax.sql.DataSource;
  * desc:
  **/
 @Configuration
-@MapperScan(basePackages = "com.springbootmybatis.mapper.demo1")
+@MapperScan(basePackages = "com.springbootmybatis.mapper.demo1", sqlSessionFactoryRef = "demo1SqlSessionFactory")
 public class DynamicDataSourceDemo1Config {
 
     @Bean("demo1")

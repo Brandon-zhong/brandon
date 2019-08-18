@@ -47,6 +47,14 @@ public class UserController {
     class Data implements Serializable {
         List demo1;
         List demo2;
+
+        public List getDemo1() {
+            return demo1;
+        }
+
+        public List getDemo2() {
+            return demo2;
+        }
     }
 
     /**
