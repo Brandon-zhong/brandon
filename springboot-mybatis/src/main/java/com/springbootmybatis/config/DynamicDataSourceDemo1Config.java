@@ -12,8 +12,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
+import java.sql.SQLException;
 
 /**
  * @author brandon
@@ -21,8 +24,12 @@ import javax.sql.DataSource;
  * desc:
  **/
 @Configuration
-@MapperScan(basePackages = "com.springbootmybatis.mapper.demo1")
+@MapperScan(basePackages = DynamicDataSourceDemo1Config.PACKAGE, sqlSessionFactoryRef = "demo1SqlSessionFactory")
 public class DynamicDataSourceDemo1Config {
+
+    // 精确到 cluster 目录，以便跟其他数据源隔离
+    static final String PACKAGE = "com.springbootmybatis.mapper.demo1";
+    static final String MAPPER_LOCATION = "classpath:com/springbootmybatis/mapper/demo1/*.xml";
 
     @Bean("demo1")
     @ConfigurationProperties(prefix = "spring.datasource.demo1")
@@ -39,16 +46,15 @@ public class DynamicDataSourceDemo1Config {
         bean.setDataSource(dataSource);
         bean.setMapperLocations(
                 // 设置mybatis的xml所在位置
-                new PathMatchingResourcePatternResolver().getResources("classpath*:com/springbootmybatis/mapper/demo1/*.xml"));
+                new PathMatchingResourcePatternResolver().getResources(DynamicDataSourceDemo1Config.MAPPER_LOCATION));
         return bean.getObject();
     }
 
-    /*@Bean("demo1SqlSessionTemplate")
-    // 表示这个数据源是默认数据源
+    // 创建该数据源的事务管理
     @Primary
-    public SqlSessionTemplate test1sqlsessiontemplate(
-            @Qualifier("test1SqlSessionFactory") SqlSessionFactory sessionfactory) {
-        return new SqlSessionTemplate(sessionfactory);
-    }*/
+    @Bean(name = "demo1TransactionManager")
+    public DataSourceTransactionManager primaryTransactionManager(@Qualifier("demo1") DataSource dataSource) {
+        return new DataSourceTransactionManager(dataSource);
+    }
 
 }

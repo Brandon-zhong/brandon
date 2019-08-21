@@ -34,19 +34,16 @@ public class UserController {
      *
      * @return 返回所有用户信息的list集合
      */
-    @GetMapping("/allUser")
-    public RestResp allUser() {
+    @GetMapping("/allUser/Demo1")
+    public RestResp allUserDemo1() {
         List<User> allUserDemo1 = userService.getAllUserDemo1();
-        List<User> allUserDemo2 = userService.getAllUserDemo2();
-        Data data = new Data();
-        data.demo1 = allUserDemo1;
-        data.demo2 = allUserDemo2;
-        return RestResp.success(data);
+        return RestResp.success(allUserDemo1);
     }
 
-    class Data implements Serializable {
-        List demo1;
-        List demo2;
+    @GetMapping("/allUser/Demo2")
+    public RestResp allUserDemo2() {
+        List<User> allUserDemo2 = userService.getAllUserDemo2();
+        return RestResp.success(allUserDemo2);
     }
 
     /**
