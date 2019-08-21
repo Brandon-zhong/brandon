@@ -23,7 +23,7 @@ import javax.sql.DataSource;
  * desc:
  **/
 @Configuration
-@MapperScan(basePackages = DynamicDataSourceDemo2Config.PACKAGE, sqlSessionFactoryRef = "demo2SqlSessionFactory")
+@MapperScan(basePackages = "com.springbootmybatis.mapper.demo2", sqlSessionFactoryRef = "demo2SqlSessionFactory")
 public class DynamicDataSourceDemo2Config {
 
     // 精确到 cluster 目录，以便跟其他数据源隔离

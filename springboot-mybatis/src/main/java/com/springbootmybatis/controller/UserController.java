@@ -40,10 +40,17 @@ public class UserController {
         return RestResp.success(allUserDemo1);
     }
 
-    @GetMapping("/allUser/Demo2")
-    public RestResp allUserDemo2() {
-        List<User> allUserDemo2 = userService.getAllUserDemo2();
-        return RestResp.success(allUserDemo2);
+    class Data implements Serializable {
+        List demo1;
+        List demo2;
+
+        public List getDemo1() {
+            return demo1;
+        }
+
+        public List getDemo2() {
+            return demo2;
+        }
     }
 
     /**

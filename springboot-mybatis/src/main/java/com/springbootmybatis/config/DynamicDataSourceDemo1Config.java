@@ -24,7 +24,7 @@ import java.sql.SQLException;
  * desc:
  **/
 @Configuration
-@MapperScan(basePackages = DynamicDataSourceDemo1Config.PACKAGE, sqlSessionFactoryRef = "demo1SqlSessionFactory")
+@MapperScan(basePackages = "com.springbootmybatis.mapper.demo1", sqlSessionFactoryRef = "demo1SqlSessionFactory")
 public class DynamicDataSourceDemo1Config {
 
     // 精确到 cluster 目录，以便跟其他数据源隔离
