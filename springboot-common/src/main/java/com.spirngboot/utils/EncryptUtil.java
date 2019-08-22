@@ -2,13 +2,9 @@ package com.spirngboot.utils;
 
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.net.util.Base64;
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
 
-import java.io.IOException;
-import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 /**
  * @author brandon
@@ -50,7 +46,7 @@ public class EncryptUtil {
         }
         String result = null;
         try {
-            byte[] b = src.getBytes("UTF-8");
+            byte[] b = src.getBytes(StandardCharsets.UTF_8);
             MessageDigest md = MessageDigest.getInstance(type);
             md.update(b);
 
