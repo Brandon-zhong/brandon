@@ -48,12 +48,15 @@ package com.leetcode.array;
  **/
 public class _12_Solution {
 
-    public String intToRoman(int num) {
+    public static String intToRoman(int num) {
 
         return null;
     }
 
     public static void main(String[] args) {
+
+        String roman = intToRoman(1);
+        System.out.println("roman --> " + roman);
 
     }
 

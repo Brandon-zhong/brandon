@@ -1,10 +1,6 @@
 package com.demo.concurrent;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.stream.Stream;
 
 /**
  * @author brandon
@@ -13,45 +9,51 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class App {
     public static void main(String[] args) {
-        new Thread(new TimeWaiting(), "TimeWaitingThread").start();
-        new Thread(new Waiting(), "WaitingThread").start();
-        new Thread(new Blocked(), "BlockedThread-1").start();
-        new Thread(new Blocked(), "BlockedThread-2").start();
-    }
 
-    static class TimeWaiting implements Runnable {
-        @Override
-        public void run() {
-            while (true) {
-                SleepUtils.second(100);
-            }
-        }
-    }
-
-    static class Waiting implements Runnable {
-        @Override
-        public void run() {
-            while (true) {
-                synchronized (Waiting.class) {
+        final int[] count = {0};
+        int total = 10;
+        final Thread[] threads = new Thread[total];
+        final Object lock = new Object();
+        for (int i = 0; i < total; ++i) {
+            Thread thread = new Thread(() -> {
+                synchronized (lock) {
                     try {
-                        Waiting.class.wait();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        lock.wait();
+                        System.out.println(Thread.currentThread().getName());
+                    } catch (Exception e) {
                     }
+                    ++count[0];
+                    SleepUtils.second(1);
                 }
-            }
+            }, "thread id --> " + i);
+            thread.setDaemon(true);
+            threads[i] = thread;
+            thread.start();
         }
+
+        //起一条线程来查看threads里的所有线程的状态
+        Thread monitor = new Thread(() -> {
+            while (true) {
+                Stream.of(threads).forEach((thread) -> {
+                    System.out.print(thread.getState().name() + " ");
+                });
+                System.out.print("\n");
+                SleepUtils.second(1);
+            }
+        });
+        //将监控线程daemon设置为true，使得线程随着jvm结束而关闭
+        monitor.setDaemon(true);
+        monitor.start();
+
+        System.out.println("all thread is wait()");
+        SleepUtils.second(2);
+        synchronized (lock) {
+            lock.notify();
+        }
+        System.out.println("all thread is notifyAll()");
+        SleepUtils.second(15);
+        System.out.println("App.main --> " + count[0]);
     }
 
-    static class Blocked implements Runnable {
-        @Override
-        public void run() {
-            synchronized (Blocked.class) {
-                while (true) {
-                    SleepUtils.second(100);
-                }
-            }
-        }
-    }
 
 }
