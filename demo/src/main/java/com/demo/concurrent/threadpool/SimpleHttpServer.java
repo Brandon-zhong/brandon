@@ -84,7 +84,9 @@ public class SimpleHttpServer {
                 reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 String header = reader.readLine();
                 // 计算出绝对路径
-                String filePath = basePath + header.split(" ")[1];
+                String filePath = basePath +
+
+                        header.split(" ")[1];
                 System.out.println("header --> " + header + " filePath --> " + filePath);
                 out = new PrintWriter(socket.getOutputStream());
                 // 如果请求资源为jpg，ico等图片资源，则读取资源并输出

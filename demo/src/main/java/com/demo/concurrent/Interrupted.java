@@ -9,16 +9,23 @@ import java.util.concurrent.TimeUnit;
  **/
 public class Interrupted {
 
+   private static final Object lock = new Object();
+
     public static void main(String[] args) throws Exception {
 
         Thread sleepRunner = new Thread(() -> {
-            while (true) {
-                SleepUtils.second(1);
+            synchronized (lock) {
+                while (true) {
+                    SleepUtils.second(1);
+                    System.out.println("Interrupted.main --> sleepRunner");
+                }
             }
         }, "sleepRunner");
         Thread busyRunner = new Thread(() -> {
-            while (true) {
-//                System.out.println("Interrupted.main.busyRunner");
+            synchronized (lock) {
+                while (true) {
+                    System.out.println("Interrupted.main.busyRunner");
+                }
             }
         }, "busyRunner");
 
@@ -31,7 +38,7 @@ public class Interrupted {
         SleepUtils.second(5);
 
         sleepRunner.interrupt();
-        busyRunner.interrupt();
+//        busyRunner.interrupt();
         System.out.println("sleepRunner interrupted is " + sleepRunner.isInterrupted());
         System.out.println("busyRunner interrupted is " + busyRunner.isInterrupted());
         SleepUtils.second(2);

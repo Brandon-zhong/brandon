@@ -1,5 +1,7 @@
 package com.demo.demo;
 
+import java.util.Optional;
+
 /**
  * @author brandon
  * Created on 2018-12-31.
@@ -29,6 +31,13 @@ public class TestMain {
 
         }
         return 0;
+    }
+
+
+    public static void main(String[] args) {
+        Optional<String> optional = Optional.ofNullable("hahah");
+        Object object = optional.orElse("this is or else");
+        System.out.println("object --> " +   object);
     }
 
 }
