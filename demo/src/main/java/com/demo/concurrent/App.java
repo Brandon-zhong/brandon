@@ -1,5 +1,7 @@
 package com.demo.concurrent;
 
+import java.util.HashMap;
+import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -22,24 +24,22 @@ public class App {
     public static void main(String[] args) throws InterruptedException {
 
 
-        for (int i = 0; i < count; ++i) {
-            new Thread(() -> {
-                threadLatch.countDown();
-                System.out.println(Thread.currentThread().getName());
-                try {
-                    mainLatch.await();
-                    demo();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+        final HashMap<String, String> map = new HashMap<String, String>(2);
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < 10000; i++) {
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            map.put(UUID.randomUUID().toString(), "");
+                        }
+                    }, "ftf" + i).start();
                 }
-            }, "" + i).start();
-        }
-
-        threadLatch.await();
-        mainLatch.countDown();
-        Thread.sleep(2000);
-        System.out.println("end  " + i);
-
+            }
+        }, "ftf");
+        t.start();
+        t.join();
 
     }
 
