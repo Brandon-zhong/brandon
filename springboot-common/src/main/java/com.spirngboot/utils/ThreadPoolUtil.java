@@ -4,10 +4,7 @@ import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.Future;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 /**
  * @author brandon
@@ -23,6 +20,8 @@ public class ThreadPoolUtil {
 
     private static ScheduledThreadPoolExecutor threadPool = new ScheduledThreadPoolExecutor(POOL_SIZE,
             new BasicThreadFactory.Builder().namingPattern("thead-pool-scheduled-%d").daemon(true).build());
+
+    private static ExecutorService executorService = Executors.newScheduledThreadPool(POOL_SIZE);
 
 
     /**

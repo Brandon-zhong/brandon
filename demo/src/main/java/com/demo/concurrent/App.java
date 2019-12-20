@@ -1,8 +1,9 @@
 package com.demo.concurrent;
 
 import java.util.HashMap;
-import java.util.UUID;
-import java.util.concurrent.CountDownLatch;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.RecursiveTask;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -11,47 +12,59 @@ import java.util.concurrent.locks.ReentrantLock;
  * desc:
  */
 public class App {
+    static class Demo extends RecursiveTask<Integer> {
 
-    private static ReentrantLock lock = new ReentrantLock();
+        @Override
+        protected Integer compute() {
+            return null;
+        }
+    }
 
-    private static final int count = 4;
-
-    private static int i = 1;
-
-    private static final CountDownLatch mainLatch = new CountDownLatch(1);
-    private static final CountDownLatch threadLatch = new CountDownLatch(count);
+    class DemoThread implements Runnable {
+        @Override
+        public void run() {
+            System.out.println("DemoThread.run   " + Thread.currentThread().getName());
+        }
+    }
 
     public static void main(String[] args) throws InterruptedException {
 
 
-        final HashMap<String, String> map = new HashMap<String, String>(2);
-        Thread t = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < 10000; i++) {
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            map.put(UUID.randomUUID().toString(), "");
-                        }
-                    }, "ftf" + i).start();
+
+        /*new Demo().fork();
+
+        ReentrantLock lock = new ReentrantLock();
+
+        Thread thread = new Thread(() -> {
+            lock.lock();
+            try {
+                int i = 0;
+                System.out.println(Thread.currentThread().getName());
+                Map<Integer, Object> map = new HashMap<>();
+                while (i++ < 10000) {
+                    map.put(i, new Object());
+                    if (i == 10000) {
+                        Thread.sleep(100);
+                        i = 0;
+                    }
                 }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                lock.unlock();
             }
-        }, "ftf");
-        t.start();
-        t.join();
+        }, "lock-thread");
+        thread.start();
 
-    }
+        new Thread(() -> {
+            System.out.println(Thread.currentThread().getName() + "   " + System.currentTimeMillis());
+            thread.interrupt();
+        }, "interrupt-thread").start();
 
-    private static void demo() {
+        Thread.sleep(100);
+        System.out.println("sfsafasf");
         lock.lock();
-        try {
-            ++i;
-            System.out.println("App.demo  " + Thread.currentThread().getName());
-        } finally {
-            lock.unlock();
-        }
+        System.out.println("App.main");
+        lock.unlock();*/
     }
-
-
 }
