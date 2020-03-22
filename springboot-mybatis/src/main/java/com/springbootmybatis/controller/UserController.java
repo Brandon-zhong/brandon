@@ -71,5 +71,11 @@ public class UserController {
         return RestResp.success();
     }
 
+    @PutMapping("/age")
+    public RestResp updateAge(int id, int age) {
+        userService.updateAge(id, age);
+        return RestResp.success();
+    }
+
 
 }

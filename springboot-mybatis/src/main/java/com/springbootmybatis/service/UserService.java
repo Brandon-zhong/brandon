@@ -7,7 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,6 +27,9 @@ public class UserService {
 
     @Autowired
     private UserMapperDemo2 userMapperDemo2;
+
+    @Autowired
+    private UserRegisterService userRegisterService;
 
 
     /**
@@ -51,6 +56,16 @@ public class UserService {
      */
 
     public int register(String userName, int age) {
+
+        return 1;
+    }
+
+    @Transactional
+    public int updateAge(int id, int age) {
+
+        userRegisterService.updateTime(id);
+        int i =  1 / 0;
+        userMapperDemo1.updateAge(id, age);
         return 1;
     }
 

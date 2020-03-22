@@ -22,5 +22,9 @@
         values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},#{age,jdbcType=INTEGER}} )
     </insert>
 
+    <update id="updateAge">
+        update user set age = #{age} where id = #{id}
+    </update>
+
 
 </mapper>

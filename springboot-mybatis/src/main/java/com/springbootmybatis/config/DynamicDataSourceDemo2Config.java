@@ -48,7 +48,6 @@ public class DynamicDataSourceDemo2Config {
     }
 
     // 创建该数据源的事务管理
-    @Primary
     @Bean(name = "demo2TransactionManager")
     public DataSourceTransactionManager primaryTransactionManager(@Qualifier("demo2") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);

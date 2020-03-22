@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * Created by brandon on 2018/11/29.
  */
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
-@EnableTransactionManagement  //开启spring事务支持
+@EnableTransactionManagement  //开启spring事务支持JdbcType
 public class MybatisApplication {
     public static void main(String[] args) {
         SpringApplication.run(MybatisApplication.class, args);
